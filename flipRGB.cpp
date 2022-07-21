@@ -11,9 +11,8 @@ void flipRGB::flipping_pic(Mat* input_mat)
 	for (i = 0; i < input_mat->rows; i++)
 		for (j = 0; j < input_mat->cols; j++)
 		{
-			Vec3b& color = input_mat->at<Vec3b>(Point(j, i));
-			Vec3b& color2 = out_mat.at<Vec3b>(Point(j, i));
-			swap(color2[0], color2[2]);
+			Vec3b& color = out_mat.at<Vec3b>(Point(j, i));
+			swap(color[0], color[2]);
 		}
 } 
 #else
