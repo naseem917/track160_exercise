@@ -5,7 +5,7 @@
 #include <variant>
 
 #define MANUALPROCESSFR
-#undef MANUALPROCESSFR // comment this whole line to enable manual processing
+//#undef MANUALPROCESSFR // comment this whole line to enable manual processing
 
 class flipRGB
 {
