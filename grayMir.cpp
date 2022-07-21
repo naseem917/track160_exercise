@@ -4,9 +4,6 @@
 
 void grayMir::convertToGrayAndFlip(Mat* input_mat, Mat* dst, double perR, double perG, double perB)
 {
-	//split(*input_mat, *channels);
-
-	//*dst = *input_mat;
 	*dst = input_mat->clone();
 
 	int i, j;
@@ -20,9 +17,6 @@ void grayMir::convertToGrayAndFlip(Mat* input_mat, Mat* dst, double perR, double
 			color2[1] = 0;
 			color2[2] = 0;
 		}
-	//imshow("Frame1", *input_mat);
-	//imshow("Frame2", *dst);
-	//char c = (char)waitKey(25);
 }
 
 void grayMir::convertMir(Mat* input_mat)
@@ -33,13 +27,9 @@ void grayMir::convertMir(Mat* input_mat)
 
 void grayMir::convertMir(Mat* input_mat)
 {
-	//Mat dst,temp;
 	cvtColor(*input_mat, temp, COLOR_BGR2GRAY);
 	flip(temp, dst_mat, 1);
 
-	//imshow("Frame1", *input_mat);
-	//imshow("Frame2", dst_mat);
-	//char c = (char)waitKey(25);
 	return;
 }
 
@@ -53,7 +43,6 @@ void grayMir::process_queue(TaskQueue<std::variant<Mat*, Stop>>& in_queue, TaskQ
 			running = false;
 		}
 		else {
-			//Mat* output = nullptr; // TODO: process the things
 			convertMir(std::get<Mat*>(task));
 			out_queue.PushTask(std::move(&dst_mat));
 		}

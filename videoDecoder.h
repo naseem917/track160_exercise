@@ -24,6 +24,5 @@ class videoDecoder
 		vector<Mat> mat_vec;
 		bool flag_decode_done;
 		VideoCapture* cap_s;
-		//queue<Mat> mat_queue;
 };
 

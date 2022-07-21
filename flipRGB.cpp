@@ -1,7 +1,7 @@
 #include "flipRGB.h"
 
 
-#ifdef MANUALPROCESSFR
+#ifdef MANUALPROCESSFR 
 
 void flipRGB::flipping_pic(Mat* input_mat)
 {
@@ -18,29 +18,17 @@ void flipRGB::flipping_pic(Mat* input_mat)
 			color2[0] = color[2];
 			color2[2] = temp_ch;
 		}
-/*	imshow("Frame1", *input_mat);
-	imshow("Frame2", out_mat);
-	char c = (char)waitKey(25);*/
 } 
 #else
 
 void flipRGB::flipping_pic(Mat* input_mat)
 {
-	//Mat channelsa[3];
-	//Mat *temp_mat,out_mat;
 	split(*input_mat, channels);
 	temp_mat = channels[0];
 	channels[0] = channels[2];
 	channels[2] = temp_mat;
 
-	//imshow("Frame11", *input_mat);
-
-
-
 	merge(channels, 3, out_mat);
-
-	//imshow("Frame12", out_mat);
-	//char c = (char)waitKey(25);
 
 	return;
 }
@@ -55,8 +43,7 @@ void flipRGB::process_queue(TaskQueue<std::variant<Mat*, Stop>>& in_queue, TaskQ
 		if (std::holds_alternative<Stop>(task)) {
 			running = false;
 		}
-		else {
-			//Mat* output = nullptr; 
+		else { 
 			flipping_pic(std::get<Mat*>(task));
 
 			out_queue.PushTask(std::move(&out_mat));
